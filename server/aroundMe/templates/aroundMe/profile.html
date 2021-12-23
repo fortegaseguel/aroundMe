@@ -1,0 +1,130 @@
+{% extends 'aroundMe/layout.html' %} {% load humanize %} {% block content %}
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 left-box">
+      <div class="container mt-5 mb-5 d-flex justify-content-center">
+        <div class="card rounded profile">
+          <div class="d-block justify-content-center">
+            <div class="area1 p-5 py-5"></div>
+            <div class="area2 p- text-center px-3">
+              <div class="image mr-3">
+                <img
+                  src="{{ user.profile.image.url }}"
+                  class="rounded-circle"
+                  width="100"
+                />
+
+                <h4 class="name mt-3 text-dark">
+                  {{ user.first_name }} {{ request.user.last_name }}
+                </h4>
+                <br />
+                <div class="container text-center">
+                  <p class="information mt-3 text-justify text-dark">
+                    {{ user.profile.bio }}
+                  </p>
+                </div>
+              </div>
+              <h6 class="card-title font-weight-bold text-dark">
+                {{ user.profile.followers.count }} Seguidores 
+                {{ user.profile.following.count }} Seguidos
+              </h6>
+
+              {% if request.user.is_authenticated %} 
+                {% if user.username != request.user.username %} 
+                  {% if user not in request.user.profile.following %}
+                    <a href="{% url 'follow' user %}" class="btn btn-primary text-center">Seguir</a>
+                  {% else %}
+                    <a href="{% url 'unfollow' user %}" class="btn btn-primary">Dejar de seguir</a>
+                  {% endif %} 
+                {% endif %} 
+              {% endif %}
+
+              <a
+                href="{% url 'editar' %}"
+                id="addATweetLeft"
+                onclick="addTweet()"
+                type="button"
+                class="btn btn-lg btn-block btn-primary mt-4 text-white"
+                >Editar mi perfil</a
+              ><br /><br />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-6 col-lg-8 col-xl-8 center-box">
+      <div class="container mt-4 mb-5">
+        <div class="d-flex justify-content-center row">
+          <div class="col-md-12">
+            <div class="feed p-2">
+              <!-- {% for post in posts %} -->
+              <div class="bg-white border mt-2">
+                <div>
+                  <div
+                    class="
+                      d-flex
+                      flex-row
+                      justify-content-between
+                      align-items-center
+                      p-2
+                      border-bottom
+                    "
+                  >
+                    <div
+                      class="d-flex flex-row align-items-center feed-text px-2"
+                    >
+                      <img
+                        class="rounded-circle"
+                        src="{{ post.user.profile.image.url }}"
+                        width="45"
+                      />
+
+                      <div class="d-flex flex-column flex-wrap ml-2">
+                        <span class="font-weight-bold text">
+                          <a href="{% url 'profile' post.user %}">
+                            {{ post.user.first_name }} {{ post.user.last_name}}
+                          </a>
+                        </span>
+
+                        <span class="text time"
+                          >{{ post.timestamp|naturaltime }}</span
+                        >
+                      </div>
+                    </div>
+                    <div class="feed-icon px-2">
+                      <i class="fa fa-ellipsis-v text"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-2 px-3">
+                  <span class="text">{{ post.content }}</span>
+                </div>
+
+                <!-- SOCIALS -->
+                <div class="d-block justify-content-end socials p-2 py-3">
+                  <a href="#"><i class="fa fa-thumbs-up"></i></a>
+                  <a href="#"><i class="fa fa-comments-o"></i></a>
+                  <a href="#"><i class="fa fa-share"></i></a>
+                  {% if request.user == post.user %}
+                  <a href="{% url 'delete' post.id %}"               style="background: white; border: none">
+                    <i class="fa fa-trash-o" style="color: #657786; font-size: 20px" aria-hidden="true">
+                    </i>
+                  </a>
+                  {% endif %}
+                </div>
+              {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-0">
+      <div class="container-fluid footer-box">Pie de Pagina</div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

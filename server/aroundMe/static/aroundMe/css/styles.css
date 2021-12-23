@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&display=swap');
+
+* {
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+/* NAVBAR */
+#navbar{
+	background-color: #222222;
+	padding: 0px;
+}
+
+.logo {
+	font-family: 'Lobster Two';
+	font-size: 36px;
+	padding: 15px;
+
+}
+
+
+
+
+/* LEFT CONTENT */
+.left-box {
+    background-color:yellow;
+    padding: 20px;
+    text-align: center;
+    border: solid black 2px;
+}
+
+
+.profile {
+    width: 400px;
+    border: none;
+    border-radius: 14px !important
+}
+
+.area1 {
+    background-color: #b5b2f1;
+    border-top-left-radius: 14px !important;
+    border-top-right-radius: 14px !important;
+    padding-top: 83px !important
+}
+
+.image {
+    top: -62px;
+    position: relative
+}
+
+.image img {
+    box-shadow: 5px 6px 6px 2px #e9ecef
+}
+
+.area2 {
+    background-color: #fff;
+    border-bottom-left-radius: 14px !important;
+    border-bottom-right-radius: 14px !important
+}
+
+.name {
+    font-size: 25px;
+    font-weight: 650
+}
+
+.information {
+    color: #9FA8DA;
+    font-weight: 500;
+    font-size: 16px
+}
+
+.list-icons {
+    display: inline-flex;
+    color: #C5CAE9
+}
+
+.list-icons li {
+    list-style: none;
+    padding: 12px;
+    border-radius: 10px;
+    width: 49px;
+    margin-right: 10px
+}
+
+.list-icons li i {
+    font-size: 17px;
+    color: #fff
+}
+
+@media (max-width:700px) {
+    .list-icons {
+        display: block
+    }
+}
+
+.facebook {
+    background: #3b5998
+}
+
+.instagram {
+    background: #3f729b
+}
+
+.youtube {
+    background: #ff0000
+}
+
+.whatsapp {
+    background: #4dc247
+}
+
+.pinterest {
+    background: #cb2027
+}
+
+
+
+/* CENTER CONTENT */
+.center-box {
+    background-color: #222222;
+    padding: 20px;
+    border: solid black 2px;
+}
+
+/* Around Section */
+#my_map, #my_profile { 
+  width: 100%;
+}
+
+/* Me Section */
+.text {
+    color: black;
+}
+
+.time {
+    font-size: 9px !important;
+    color: black;
+}
+
+.post_text {
+    color: black;
+}
+
+#rightBtn {
+    width: 50%;
+    padding: 10px 0 0 0;
+    margin-left: 65%;
+    color: #fff;
+  }
+  
+.socials i {
+    margin-right: 14px;
+    font-size: 17px;
+    color: #000;
+    cursor: pointer;
+}
+
+.feed-image img {
+    width: 100%;
+    height: auto;
+}
+
+
+/* RIGHT CONTENT */
+.right-box {
+    background-color:orange;
+    padding: 20px;
+    border: solid black 2px; 
+}
+
+/* REGISTER PAGE*/
+
+
+
+/* LOGIN PAGE*/
+
+.aroundMe-login-box {
+    max-width: 600px;
+    margin: 20px auto;
+    border: solid black 2px;
+    border-radius: 10px;
+    padding : 50px 30px;
+    color: black;
+}
+
+.aroundMe-login-box header img{
+    width: 70px;
+}
+
+.aroundMe-login-box header{
+    text-align: center;
+}
+.input-wrapper{
+    color: black;
+    margin-bottom: 15px;
+}
+
+.input-wrapper label,
+.input-wrapper input{
+    width: 100%;
+    display: block;
+    color: black;
+}
+
+.input-wrapper input{
+    border: none;
+    background-color: #eee;
+    padding: 10px;
+    font-size: 20px;
+    border-bottom: 3px solid #6a6a6a;
+}
+
+.input-wrapper input[type="password"]{
+   border-bottom: 3px solid red;
+}
+
+.input-wrapper input:focus{
+    outline: none;
+}
+
+.input-wrapper label{
+    background-color: #eee;
+    padding: 10px;
+    color: #6a6a6a;
+}
+
+.aroundMe-btn{
+    background-color: #222222;
+    border: none;
+    width: 100%;
+    padding: 10px;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #222222;
+    border: none;
+    width: 100%;
+    padding: 10px;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.aroundMe-login-box .footer{
+    text-align: center;
+    margin-top: 20px;
+    color: #fff;
+}
+.aroundMe-login-box .footer a{
+    color: #fff;
+    text-decoration: none;
+}
+
+/* MAP POP UPS */
+
+.card_popup {
+    width: 400px;
+    border: none;
+    border-radius: 10px;
+    background-color: #fff
+}
+
+.stats {
+    background: #f2f5f8 !important;
+    color: #000 !important
+}
+
+.articles {
+    font-size: 10px;
+    color: #a1aab9
+}
+
+.number1 {
+    font-weight: 500
+}
+
+.followers {
+    font-size: 10px;
+    color: #a1aab9
+}
+
+.number2 {
+    font-weight: 500
+}
+
+.rating {
+    font-size: 10px;
+    color: #a1aab9
+}
+
+.number3 {
+    font-weight: 500
+}

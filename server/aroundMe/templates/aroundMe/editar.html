@@ -1,0 +1,47 @@
+{% extends 'aroundMe/layout.html' %} {% load static %} {% block content %}
+
+<div class="login-page">
+  <div class="aroundMe-login-box">
+    <header>
+      <h1 class="text-dark">Editar mi perfil</h1>
+      <br />
+    </header>
+
+    <div class="col-xs text-center">
+      <br />
+      <img
+        src="{{ request.user.profile.image.url }}"
+        alt=""
+        class="rounded-circle p-3"
+        width="200"
+      />
+    </div>
+
+    <!-- Formulario -->
+    <form class="col pr-0" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="input-wrapper">
+        <label>Nombre</label>
+        {{ u_form.first_name }}
+      </div>
+      <div class="input-wrapper">
+        <label for="user-name-id">Usuario</label>
+        {{ u_form.username }}
+      </div>
+      <div class="input-wrapper">
+        <label>Bio</label>
+        {{ p_form.bio }}
+      </div>
+      <div class="input-wrapper">
+        <label>Foto de Perfil</label>
+        {{ p_form.image }}
+      </div>
+
+      <button class="btn btn-lg btn-block btn-primary mt-4 text-white">
+        Actualizar
+      </button>
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,52 @@
+{% extends 'aroundMe/layout.html' %} 
+{% load static %} 
+
+{% block content %}
+<div class="login-page">
+  <div class="aroundMe-login-box">
+    <header>
+      <img
+        src="{% static 'aroundMe/img/logo_awakelab.png' %}"
+        alt="aroundMe logo"
+      /><br><br>
+      <h1 class="text-dark">Registrate en aroundMe</h1>
+      <br />
+    </header>
+
+    <form method="POST">
+      {% csrf_token %}
+      <div class="input-wrapper">
+        <label for="user-name-id">Nombre</label>
+        {{ form.first_name }}
+      </div>
+      <div class="input-wrapper">
+        <label for="user-name-id">Apellido</label>
+        {{ form.last_name }}
+      </div>
+      <div class="input-wrapper">
+        <label for="user-name-id">Usuario</label>
+        {{ form.username }}
+      </div>
+      <div class="input-wrapper">
+        <label for="user-name-id">Email</label>
+        {{ form.email }}
+      </div>
+      <div class="input-wrapper">
+        <label for="password-id">Contraseña</label>
+        {{ form.password1 }}
+      </div>
+      <div class="input-wrapper">
+        <label for="password-id">Confirme Contraseña</label>
+        {{ form.password2 }}
+      </div>
+
+      <button class="btn btn-block btn-primary">Registrarse</button>
+    </form>
+
+    <div class="footer">
+      <a class="text-dark" href="{% url 'login'%}">¿Ya tienes una cuenta? Iniciar Sesión</a>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

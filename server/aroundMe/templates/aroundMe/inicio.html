@@ -1,0 +1,141 @@
+{% extends 'aroundMe/layout.html' %}
+{% block content %}
+{% load humanize %}
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 left-box">
+      {% include 'aroundMe/components/left.html' %}
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-6 col-lg-8 col-xl-8 center-box">
+      <ul class="nav nav-pills nav-fill">
+        <li class="nav-item active">
+          <a class="btn btn-primary btn-block p-2 active" data-toggle="tab" data-target="#home">Around</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-primary btn-block p-2 ml-2" data-toggle="tab" data-target="#menu1">Me</a>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <div id="home" class="tab-pane fade in active collapse show">
+          <div class="container" id="my_map">
+            <div class="d-flex justify-content-center row">
+              <div class="col-md-9">
+                <div class="feed p-2">
+                  <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white border">
+                    <form class="postForm w-100" method="POST">
+                      {% csrf_token %}
+                      {{ form.content }}
+
+                      <div class="container">
+                        <button class="btn btn-primary btn-block">Publicar</button>
+                      </div>
+
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="container my_map">
+
+              {{ my_map|safe }}
+
+            </div>
+
+
+
+          </div>
+        </div>
+
+        <div id="menu1" class="tab-pane fade">
+          <div class="container" id="my_profile">
+            <div class="container mt-4 mb-5">
+              <div class="d-flex justify-content-center row">
+                <div class="col-md-8">
+                  <div class="feed p-2">
+                    <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white border">
+                      <form class="postForm w-100 text-dark" method="POST">
+                        {% csrf_token %}
+                        {{ form.content }}
+
+                        <div class="container">
+                          <button class="btn btn-primary btn-block">Publicar</button>
+                        </div>
+
+                      </form>
+
+                    </div>
+
+                    {% for post in posts %}
+                    <div class="bg-white border mt-2">
+                      <div>
+                        <div class="d-flex flex-row justify-content-between align-items-center p-2 border-bottom">
+                          <div class="d-flex flex-row align-items-center feed-text px-2">
+
+                            <img class="rounded-circle" src="{{ post.user.profile.image.url }}" width="45">
+
+                            <div class="d-flex flex-column flex-wrap ml-2">
+
+                              <span class="font-weight-bold text">
+
+                                <a href="{% url 'profile' post.user %}">
+                                  {{ post.user.first_name }} {{ post.user.last_name}}
+                                </a>
+                              </span>
+
+                              <span class="text time">{{ post.timestamp|naturaltime }}</span>
+
+                            </div>
+                          </div>
+                          <div class="feed-icon px-2"><i class="fa fa-ellipsis-v text"></i></div>
+                        </div>
+                      </div>
+                      <div class="p-2 px-3">
+
+                        <span class="text">{{ post.content }}</span>
+
+                      </div>
+
+                      <!-- SOCIALS -->
+                      <div class="d-block justify-content-end socials p-2 py-3">
+                        <a href="#"><i class="fa fa-thumbs-up"></i></a>
+                        <a href="#"><i class="fa fa-comments-o"></i></a>
+                        <a href="#"><i class="fa fa-share"></i></a>
+
+                        {% if request.user == post.user %}
+                        <a href="{% url 'delete' post.id %}" style="background: white; border: none">
+                          <i class="fa fa-trash-o" style="color: #657786; font-size: 20px" aria-hidden="true"></i>
+                        </a>
+                        {% endif %}
+                      </div>
+                    </div>
+                  {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="row mb-0">
+  <div class="container-fluid footer-box">
+    Pie de Pagina
+  </div>
+</div>
+
+{% endblock %}
